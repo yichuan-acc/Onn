@@ -31,3 +31,4 @@ change 'floppy' to 'disk'
 'bochsrc'>4:
 add 'options="gui_debug"'
 
+bochs -q
