@@ -32,3 +32,11 @@ change 'floppy' to 'disk'
 add 'options="gui_debug"'
 
 bochs -q
+
+
+
+
+
+
+在第二个扇区开始的4个扇区写入了内核加载器,
+实模式的内存布局
