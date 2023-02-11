@@ -20,7 +20,7 @@ clean:
 	rm -rf *.img
 
 .PHONY:bochs
-bochs:
+bochs:master.img
 	bochs -q
 
 
