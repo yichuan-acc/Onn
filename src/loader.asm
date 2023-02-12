@@ -5,6 +5,8 @@ dw 0x55aa; 魔数，用于判断错误
 mov si,loading
 call print
 
+; jmp error
+
 jmp $
 
 print:
@@ -21,3 +23,20 @@ print:
 
 loading:
     db "loading Onix...",10,13,0; \n\r
+
+error:
+    mov si, .msg
+    call print
+    hlt; 让 CPU 停止
+    jmp $
+    .msg db "Booting Error!!!", 10, 13, 0
+
+
+
+
+
+#
+ards_count:
+    dd 0
+ards_buffer:
+
