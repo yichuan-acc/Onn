@@ -115,3 +115,6 @@ COLLECT_GCC_OPTIONS='-v' '-m32' '-I' '../include' '-o' 'main.out' '-e' 'kernel_i
 把 vscode 下方 CRLF 改为 LF
 - 出现 SDL.h
 pacman -S sdl
+
+.PHONY
+因为是根据时间生成的
