@@ -17,6 +17,10 @@ hello.s: hello.c
 	gcc $(CFLAGS) -S $< -o $@
 
 
+.PHONY: params.s
+params.s: params.c
+	gcc $(CFLAGS) -S $< -o $@
+
 .PHONY: clean
 clean:
 	rm -rf *.o
