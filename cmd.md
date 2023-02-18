@@ -108,3 +108,10 @@ COLLECT_GCC_OPTIONS='-v' '-m32' '-I' '../include' '-o' 'main.out' '-e' 'kernel_i
 COLLECT_GCC_OPTIONS='-v' '-m32' '-I' '../include' '-o' 'main.out' '-e' 'kernel_init' '-nostartfiles' '-mtune=generic' '-march=x86-64' '-dumpdir' 'main.out.'
 ```
 **编译过程由 cc1 完成**
+
+
+# 15 
+- 出现  PKGBUILD contains CRLF characters and cannot be sourced. 问题
+把 vscode 下方 CRLF 改为 LF
+- 出现 SDL.h
+pacman -S sdl
