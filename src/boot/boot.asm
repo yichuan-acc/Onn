@@ -21,12 +21,15 @@ mov edi, 0x1000; 读取的目标内存
 mov ecx, 2; 起始扇区 2为调试loader的扇区
 mov bl, 4; 扇区数量 有关命令行 dd这一条有关loader的命令
 
+
+;读入了loader
 call read_disk
 ; xchg bx,bx
 
 cmp word [0x1000],0x55aa
 jnz error
 
+;跳转到loader
 jmp 0:0x1002
 
 
