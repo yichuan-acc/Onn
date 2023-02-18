@@ -69,8 +69,11 @@ clean:
 
 .PHONY:bochs
 bochs:$(BUILD)/master.img
-	bochs -q
+	bochs -q -f ../bochs/bochsrc
 
+.PHONY:bochsg
+bochsg:$(BUILD)/master.img
+	bochs-gdb -q -f ../bochs/bochsrc.gdb
 
 
 
