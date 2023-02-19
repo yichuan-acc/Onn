@@ -56,10 +56,11 @@ void test_debug()
 void kernel_init()
 {
     console_init();
-
     // test_arg(5, 1, 0xaa, 5, 0x55, 10);
     // test_assert();
     // test_panic();
-    test_debug();
+    // test_debug();
+    gdt_init();
+
     return;
 }
