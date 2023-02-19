@@ -58,8 +58,6 @@ static void task_create(task_t *task, target_t target)
     frame->eip = (void *)target;
 
     task->stack = (u32 *)stack;
-
-    // return task;
 }
 
 void task_init()
