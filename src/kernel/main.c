@@ -4,6 +4,7 @@
 #include <onix/string.h>
 #include <onix/console.h>
 #include <onix/stdarg.h>
+#include <onix/printk.h>
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
@@ -26,7 +27,14 @@ void kernel_init()
 {
     console_init();
 
-    test_arg(5, 1, 0xaa, 5, 0x55, 10);
+    // test_arg(5, 1, 0xaa, 5, 0x55, 10);
+
+    int cnt = 30;
+    while (cnt--)
+    {
+        /* code */
+        printk("hello world sss  %#010x\n", cnt);
+    }
 
     return;
 }

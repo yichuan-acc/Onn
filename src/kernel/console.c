@@ -120,7 +120,7 @@ static void scroll_up()
     }
     else
     {
-        memcpy(MEM_BASE, screen, SCR_SIZE);
+        memcpy((void *)MEM_BASE, (void *)screen, SCR_SIZE);
         pos -= (screen - MEM_BASE);
         screen = MEM_BASE;
     }
