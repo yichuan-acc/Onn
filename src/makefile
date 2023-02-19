@@ -46,7 +46,6 @@ $(BUILD)/kernel.bin: \
 $(BUILD)/system.bin: $(BUILD)/kernel.bin
 	objcopy -O binary $< $@
 
-
 $(BUILD)/system.map: $(BUILD)/kernel.bin
 	nm $< | sort > $@
 
