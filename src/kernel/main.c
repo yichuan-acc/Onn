@@ -5,6 +5,7 @@
 #include <onix/console.h>
 #include <onix/stdarg.h>
 #include <onix/printk.h>
+#include <onix/assert.h>
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
@@ -23,18 +24,33 @@ void test_arg(int cnt, ...)
     va_end(args);
 }
 
-void kernel_init()
+void test_printk()
 {
-    console_init();
-
-    // test_arg(5, 1, 0xaa, 5, 0x55, 10);
-
     int cnt = 30;
     while (cnt--)
     {
         /* code */
         printk("hello world sss  %#010x\n", cnt);
     }
+}
 
+void test_assert()
+{
+    assert(3 < 5);
+    assert(3 > 5);
+}
+
+void test_panic()
+{
+    panic("..Out Of Memory");
+}
+
+void kernel_init()
+{
+    console_init();
+
+    // test_arg(5, 1, 0xaa, 5, 0x55, 10);
+    // test_assert();
+    test_panic();
     return;
 }

@@ -165,7 +165,7 @@ static void command_del()
 void console_write(char *buf, u32 count)
 {
     char ch;
-    char *ptr = (char *)pos;
+    // char *ptr = (char *)pos;
     while (count--)
     {
         /* code */
@@ -211,14 +211,15 @@ void console_write(char *buf, u32 count)
                 command_lf();
             }
 
-            // 已经写到内存了，这是显示出来
-            *ptr = ch;
-            ptr++;
-            *ptr = attr;
-            ptr++;
+            // 已经写到内存了，这是显示出来、
+            *((char *)pos) = ch;
+            pos++;
+            *((char *)pos) = attr;
 
-            pos += 2;
+            pos++;
+
             x++;
+
             break;
         }
     }
