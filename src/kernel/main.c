@@ -49,7 +49,6 @@ void test_panic()
 void test_debug()
 {
     BMB;
-
     DEBUGK("debug onix!!!\n");
 }
 
