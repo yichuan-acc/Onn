@@ -6,7 +6,7 @@
 // 入口地址
 typedef u32 target_t();
 
-// 进程栈底在什么地方
+// 进程栈底在 esp 放高位置
 typedef struct task_t
 {
     u32 *stack; // 内核栈

@@ -10,7 +10,7 @@ void gdt_init()
 {
     // BMB;
 
-    DEBUGK("init gdt!!!\n");
+    // DEBUGK("init gdt!!!\n");
 
     asm volatile("sgdt gdt_ptr");
 

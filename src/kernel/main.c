@@ -7,7 +7,8 @@
 #include <onix/printk.h>
 #include <onix/assert.h>
 #include <onix/debug.h>
-
+#include <onix/global.h>
+#include <onix/task.h>
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
 void test_arg(int cnt, ...)
@@ -60,6 +61,6 @@ void kernel_init()
     // test_panic();
     // test_debug();
     gdt_init();
-
+    task_init();
     return;
 }

@@ -1,11 +1,6 @@
 #include <onix/task.h>
 #include <onix/printk.h>
 #include <onix/debug.h>
-// #include <onix/memory.h>
-// #include <onix/assert.h>
-// #include <onix/interrupt.h>
-// #include <onix/string.h>
-// #include <onix/bitmap.h>
 
 #define PAGE_SIZE 0X1000
 
@@ -26,7 +21,6 @@ void schedule()
 {
     task_t *current = running_task();
     task_t *next = current == a ? b : a;
-
     task_switch(next);
 }
 
@@ -59,16 +53,17 @@ static void task_create(task_t *task, target_t target)
     frame->esi = 0x22222222;
     frame->edi = 0x33333333;
     frame->ebp = 0x44444444;
+
+    // 函数return后会跳转到这里eip
     frame->eip = (void *)target;
 
     task->stack = (u32 *)stack;
 
-    return task;
+    // return task;
 }
 
 void task_init()
 {
-
     task_create(a, thread_a);
     task_create(b, thread_b);
     schedule();
