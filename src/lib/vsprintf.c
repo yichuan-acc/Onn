@@ -5,7 +5,7 @@
 
 #include <onix/stdarg.h>
 #include <onix/string.h>
-// #include <onix/assert.h>
+#include <onix/assert.h>
 
 #define ZEROPAD 1  // 填充零
 #define SIGN 2     // unsigned/signed long
@@ -378,7 +378,7 @@ int vsprintf(char *buf, const char *fmt, va_list args)
 
     // 返回转换好的字符串长度值
     i = str - buf;
-    // assert(i < 1024);
+    assert(i < 1024);
     return i;
 }
 

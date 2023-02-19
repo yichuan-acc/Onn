@@ -6,6 +6,7 @@
 #include <onix/stdarg.h>
 #include <onix/printk.h>
 #include <onix/assert.h>
+#include <onix/debug.h>
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
@@ -45,12 +46,20 @@ void test_panic()
     panic("..Out Of Memory");
 }
 
+void test_debug()
+{
+    BMB;
+
+    DEBUGK("debug onix!!!\n");
+}
+
 void kernel_init()
 {
     console_init();
 
     // test_arg(5, 1, 0xaa, 5, 0x55, 10);
     // test_assert();
-    test_panic();
+    // test_panic();
+    test_debug();
     return;
 }
