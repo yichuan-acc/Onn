@@ -128,7 +128,7 @@ void idt_init()
         handler_table[i] = exception_handler;
     }
 
-    for (size_t i = 0x20; i < ENTRY_SIZE; i++)
+    for (size_t i = 20; i < ENTRY_SIZE; i++)
     {
         handler_table[i] = default_handler;
     }
