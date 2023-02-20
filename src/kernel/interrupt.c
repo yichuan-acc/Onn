@@ -142,7 +142,7 @@ void pic_init()
     outb(PIC_S_DATA, 2);          // ICW3: 设置从片连接到主片的 IR2 引脚
     outb(PIC_S_DATA, 0b00000001); // ICW4: 8086模式, 正常EOI
 
-    outb(PIC_M_DATA, 0b11111101); // 关闭所有中断 <---
+    outb(PIC_M_DATA, 0b11111111); // 关闭所有中断 <---
     // 每一位代表中断允许，这个情况0b11111101代表可以允许键盘中断
     outb(PIC_S_DATA, 0b11111111); // 关闭所有中断
 }

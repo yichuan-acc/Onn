@@ -8,6 +8,7 @@
 #define PIT_CHAN2_REG 0X42
 #define PIT_CTRL_REG 0X43
 
+// 中断频率
 #define HZ 100
 #define OSCILLATOR 1193182
 #define CLOCK_COUNTER (OSCILLATOR / HZ)
@@ -21,7 +22,6 @@ void clock_handler(int vector)
 {
     assert(vector == 0x20);
     send_eoi(vector);
-    stop_beep();
 
     jiffies++;
     DEBUGK("clock jiffies %d ...\n", jiffies);
@@ -37,7 +37,7 @@ void pit_init()
 
 void clock_init()
 {
-    // pit_init();
-    // set_interrupt_handler(IRQ_CLOCK, clock_handler);
-    // set_interrupt_mask(IRQ_CLOCK, true);
+    pit_init();
+    set_interrupt_handler(IRQ_CLOCK, clock_handler);
+    set_interrupt_mask(IRQ_CLOCK, true);
 }
