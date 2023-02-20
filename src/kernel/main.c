@@ -10,6 +10,7 @@
 #include <onix/global.h>
 #include <onix/task.h>
 #include <onix/interrupt.h>
+#include <onix/stdlib.h>
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
@@ -61,5 +62,18 @@ void kernel_init()
     gdt_init();
     interrupt_init();
     // task_init();
+
+    asm volatile(
+        "sti\n"
+        "movl %eax,%eax\n");
+
+    u32 counter = 0;
+    while (true)
+    {
+        /* code */
+        DEBUGK("looping in kernel init %d...\n", counter++);
+        delay(100000000);
+    }
+
     return;
 }
