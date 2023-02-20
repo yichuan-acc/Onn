@@ -2,14 +2,14 @@
 
 dw 0x55aa; 魔数，用于判断错误
 
-xchg bx,bx;
+; xchg bx,bx;
 
 mov si,loading
 call print
 
 ; jmp error
 
-xchg bx,bx
+; xchg bx,bx
 
 detect_memory:
     ;ebx置为0
