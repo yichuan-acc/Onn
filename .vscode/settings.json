@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "string.h": "c",
         "printk.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "system_error": "c"
     }
 }
