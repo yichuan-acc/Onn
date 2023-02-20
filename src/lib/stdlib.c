@@ -1,4 +1,5 @@
 #include <onix/stdlib.h>
+#include <onix/types.h>
 
 // 延迟
 void delay(u32 count)

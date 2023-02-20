@@ -3,7 +3,7 @@
 
 #include <onix/types.h>
 
-void delay(u32 count);
 void hang();
+void delay(u32 count);
 
 #endif

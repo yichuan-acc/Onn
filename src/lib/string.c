@@ -1,4 +1,5 @@
 #include <onix/string.h>
+#include <onix/stdlib.h>
 
 char *strcpy(char *dest, const char *src)
 {

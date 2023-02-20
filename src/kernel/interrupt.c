@@ -2,6 +2,7 @@
 #include <onix/global.h>
 #include <onix/debug.h>
 #include <onix/printk.h>
+#include <onix/io.h>
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 // #define LOGK(fmt, args...)
@@ -64,7 +65,7 @@ u32 counter = 0;
 void default_handler(int vector)
 {
     send_eoi(vector);
-    DEBUGK("[%x] default interrupt called...\n", vector, counter++);
+    LOGK("[%d] default interrupt called %d...\n", vector, counter++);
 }
 
 void exception_handler(int vector)
@@ -139,4 +140,6 @@ void idt_init()
 
 void interrupt_init()
 {
+    pic_init();
+    idt_init();
 }
