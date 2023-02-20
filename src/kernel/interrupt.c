@@ -3,6 +3,7 @@
 #include <onix/debug.h>
 #include <onix/printk.h>
 #include <onix/io.h>
+#include <onix/stdlib.h>
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 // #define LOGK(fmt, args...)
@@ -100,7 +101,7 @@ void pic_init()
     outb(PIC_S_DATA, 2);          // ICW3: 设置从片连接到主片的 IR2 引脚
     outb(PIC_S_DATA, 0b00000001); // ICW4: 8086模式, 正常EOI
 
-    outb(PIC_M_DATA, 0b11111111); // 关闭所有中断
+    outb(PIC_M_DATA, 0b11111110); // 关闭所有中断 <---
     outb(PIC_S_DATA, 0b11111111); // 关闭所有中断
 }
 
@@ -127,7 +128,7 @@ void idt_init()
         handler_table[i] = exception_handler;
     }
 
-    for (size_t i = 20; i < ENTRY_SIZE; i++)
+    for (size_t i = 0x20; i < ENTRY_SIZE; i++)
     {
         handler_table[i] = default_handler;
     }
