@@ -83,10 +83,13 @@ void kernel_init()
     console_init();
     gdt_init();
     interrupt_init();
+
     // task_init();
-    // clock_init();
+    clock_init();
     time_init();
     rtc_init();
+
+    // set_alarm(2);
 
     asm volatile("sti");
     hang();

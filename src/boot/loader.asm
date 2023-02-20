@@ -37,7 +37,7 @@ detect_memory:
     add di, cx
 
     ; 将结构体数量加一
-    inc word [ards_count]
+    inc dword [ards_count]
 
     cmp ebx, 0
     jnz .next
@@ -118,7 +118,10 @@ protect_mode:
     mov ecx, 10; 起始扇区 2为调试loader的扇区
     mov bl, 200; 扇区数量 有关命令行 dd这一条有关loader的命令
 
-    call read_disk
+    call read_disk ;读取内核
+
+    mov eax,0x20220205 ; 内核魔数
+    mov ebx,ards_count ; ards数量指针
 
     ; xchg bx,bx
     jmp dword code_selector:0x10000
