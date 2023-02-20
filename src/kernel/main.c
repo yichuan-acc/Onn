@@ -12,6 +12,7 @@
 #include <onix/interrupt.h>
 #include <onix/stdlib.h>
 #include <onix/rtc.h>
+#include <onix/memory.h>
 
 extern void console_init();
 extern void gdt_init();
@@ -80,19 +81,22 @@ void test_interrupt()
 }
 void kernel_init()
 {
-    console_init();
-    gdt_init();
+    memory_map_init();
+    // console_init();
+    // gdt_init();
     interrupt_init();
 
     // task_init();
     clock_init();
-    time_init();
-    rtc_init();
+    // time_init();
+    // rtc_init();
 
     // set_alarm(2);
+
+    memory_test();
 
     asm volatile("sti");
     hang();
 
-    return;
+    // return;
 }

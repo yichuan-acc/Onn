@@ -1,6 +1,7 @@
 [bits 32]
 
 extern kernel_init
+extern gdt_init
 extern memory_init
 extern console_init
 
@@ -10,8 +11,10 @@ _start:
     push eax;magic
 
     call console_init; 控制台初始化
-    call memory_init;内存初始化
-
+    call gdt_init;全局描述符初始化
+   
+    call memory_init;内存初始化 ,需要两个参数
+    call kernel_init;内核初始化
     ; call kernel_init
     ; xchg bx,bx
     ; int 0x80;调用 0x80 中断函数
