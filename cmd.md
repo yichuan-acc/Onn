@@ -1,5 +1,6 @@
 # README
 
+# 先让程序跑起来，剩下的以后再说
 line for cmd in shell
 
 > for command in selection

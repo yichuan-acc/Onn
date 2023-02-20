@@ -1,6 +1,7 @@
 #include <onix/time.h>
 #include <onix/debug.h>
 #include <onix/stdlib.h>
+#include <onix/io.h>
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 
@@ -103,6 +104,11 @@ int get_yday(tm *time)
     return res;
 }
 
+u8 cmos_read(u8 addr)
+{
+    outb(CMOS_ADDR, CMOS_NMI | addr);
+    return inb(CMOS_DATA);
+}
 void time_read_bcd(tm *time)
 {
     // CMOS 的访问速度很慢。为了减小时间误差，在读取了下面循环中所有数值后，
@@ -149,5 +155,5 @@ void time_init()
          time.tm_hour,
          time.tm_min,
          time.tm_sec);
-    hang();
+    // hang();//这里用来测试显示时间的，与clock错开
 }
