@@ -118,3 +118,13 @@ pacman -S sdl
 
 .PHONY
 因为是根据时间生成的
+
+
+branch 35 | 安装声卡驱动
+以下有一些可能没有必要安装，也不管什么全部安装后重启一下系统就可以了。
+sudo pacman -S alsa-utils
+sudo pacman -S alsa-plugins
+sudo pacman -S pulseaudio-alsa
+sudo pacman -S pavucontrol-qt
+sudo pacman -S pavucontrol
+启用：amixer sset Master unmute
