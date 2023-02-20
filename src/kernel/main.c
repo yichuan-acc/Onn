@@ -17,6 +17,7 @@ extern void gdt_init();
 extern void interrupt_init();
 extern void clock_init();
 extern void hang();
+extern void time_init();
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
@@ -82,6 +83,7 @@ void kernel_init()
     interrupt_init();
     // task_init();
     clock_init();
+    time_init();
 
     asm volatile("sti");
     hang();
