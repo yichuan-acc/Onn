@@ -56,13 +56,8 @@ void test_debug()
     DEBUGK("debug onix!!!\n");
 }
 
-void kernel_init()
+void test_interrupt()
 {
-    console_init();
-    gdt_init();
-    interrupt_init();
-    // task_init();
-
     asm volatile(
         "sti\n");
 
@@ -73,6 +68,13 @@ void kernel_init()
         DEBUGK("looping in kernel init %d...\n", counter++);
         delay(100000000);
     }
+}
+void kernel_init()
+{
+    console_init();
+    gdt_init();
+    interrupt_init();
+    // task_init();
 
     return;
 }

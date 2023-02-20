@@ -14,17 +14,40 @@ interrupt_handler_%1:
     push %1; 压入中断向量，跳转到中断入口
     jmp interrupt_entry
 %endmacro
-
+ 
 interrupt_entry:
 
+    ; 保存上文寄存器信息
+    push ds
+    push es
+    push fs
+    push gs
+    pusha
+
     ; 找到前面 push %1 压入的 中断向量
-    mov eax,[esp]
+    mov eax, [esp + 12 * 4]
+
+    ; 向中断处理函数传递参数
+    push eax
 
     ; 调用中断处理函数，handler_table 中存储了中断处理函数的指针
     call [handler_table + eax * 4]
 
-    add esp,8
+    ; 对应 push eax，调用结束恢复栈
+    add esp, 4
+
+    ; 恢复下文寄存器信息
+    popa
+    pop gs
+    pop fs
+    pop es
+    pop ds
+
+    ; 对应 push %1
+    ; 对应 error code 或 push magic
+    add esp, 8
     iret
+ 
 
 INTERRUPT_HANDLER 0x00, 0; divide by zero
 INTERRUPT_HANDLER 0x01, 0; debug
