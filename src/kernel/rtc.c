@@ -1,4 +1,3 @@
-
 #include <onix/types.h>
 #include <onix/debug.h>
 #include <onix/interrupt.h>
@@ -36,7 +35,7 @@ void cmos_write(u8 addr, u8 value)
     outb(CMOS_DATA, value);
 }
 
-// extern void start_beep();
+extern void start_beep();
 
 static u32 volatile counter = 0;
 
