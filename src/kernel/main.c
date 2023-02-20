@@ -12,12 +12,12 @@
 #include <onix/interrupt.h>
 #include <onix/stdlib.h>
 
-extern void console_init();
-extern void gdt_init();
-extern void interrupt_init();
-extern void clock_init();
-extern void hang();
-extern void time_init();
+// extern void console_init();
+// extern void gdt_init();
+// extern void interrupt_init();
+// extern void clock_init();
+// extern void hang();
+// extern void time_init();
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
