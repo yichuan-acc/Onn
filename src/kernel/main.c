@@ -27,6 +27,7 @@ extern void mapping_init();
 extern void memory_test();
 extern void bitmap_test_s();
 extern void memory_test_44();
+extern void task_init();
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 
@@ -103,22 +104,9 @@ void intr_test()
 
     set_interrupt_state(intr);
 }
-void kernel_init()
+
+void test_intr_45()
 {
-    memory_map_init();
-    mapping_init();
-    // console_init();
-    // gdt_init();
-    interrupt_init();
-    // task_init();
-    // clock_init();
-    // time_init();
-    // rtc_init();
-    // set_alarm(2);
-
-    // bitmap_test_s();
-    // memory_test_44();
-
     bool intr = interrupt_disable();
     set_interrupt_state(true);
 
@@ -134,7 +122,28 @@ void kernel_init()
 
     LOGK("%d\n", intr);
     LOGK("%d\n", get_interrupt_state());
+}
+
+void kernel_init()
+{
+    memory_map_init();
+    mapping_init();
+    // console_init();
+    // gdt_init();
+    interrupt_init();
+    // task_init();
+    clock_init();
+    // time_init();
+    // rtc_init();
+    // set_alarm(2);
+
+    // bitmap_test_s();
+    // memory_test_44();
+
+    task_init();
+
+    set_interrupt_state(true);
 
     // asm volatile("sti");
-    hang();
+    // hang();
 }

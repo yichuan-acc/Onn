@@ -47,6 +47,8 @@ void clock_handler(int vector)
     assert(vector == 0x20);
     send_eoi(vector);
 
+    stop_beep();
+
     // if (jiffies % 200 == 0)
     // {
     //     start_beep();
@@ -55,7 +57,18 @@ void clock_handler(int vector)
     jiffies++;
     // DEBUGK("clock jiffies %d ...\n", jiffies);
 
-    stop_beep();
+    task_t *task = running_task();
+    assert(task->magic == ONIX_MAGIC);
+
+    task->jiffies = jiffies;
+    task->ticks--;
+    if (!task->ticks)
+    {
+        task->ticks = task->priority;
+        schedule();
+    }
+
+    // stop_beep();
 }
 
 void pit_init()
