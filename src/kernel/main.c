@@ -21,6 +21,9 @@ extern void clock_init();
 extern void hang();
 extern void time_init();
 extern void rtc_init();
+extern void memory_map_init();
+
+extern void mapping_init();
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
@@ -82,20 +85,26 @@ void test_interrupt()
 void kernel_init()
 {
     memory_map_init();
+
+    mapping_init();
     // console_init();
     // gdt_init();
     interrupt_init();
 
     // task_init();
-    clock_init();
+    // clock_init();
     // time_init();
     // rtc_init();
 
     // set_alarm(2);
 
-    memory_test();
+    // memory_test();
 
-    asm volatile("sti");
+    BMB;
+    char *ptr = (char *)(0x100000 * 20);
+    ptr[0] = 'a';
+
+    // asm volatile("sti");
     hang();
 
     // return;
