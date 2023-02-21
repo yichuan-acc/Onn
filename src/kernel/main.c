@@ -105,7 +105,6 @@ void kernel_init()
     // clock_init();
     // time_init();
     // rtc_init();
-
     // set_alarm(2);
 
     bitmap_test_s();
