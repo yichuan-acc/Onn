@@ -6,6 +6,7 @@
 #include <onix/interrupt.h>
 #include <onix/string.h>
 #include <onix/bitmap.h>
+#include <onix/syscall.h>
 
 extern bitmap_t kernel_map;
 extern void task_switch(task_t *next);
@@ -56,6 +57,10 @@ static task_t *task_search(task_state_t state)
     return task;
 }
 
+void task_yield()
+{
+    schedule();
+}
 // #define PAGE_SIZE 0X1000
 
 // task_t *a = (task_t *)0x1000;
@@ -74,6 +79,9 @@ task_t *running_task()
 
 void schedule()
 {
+    // 不可中断，
+    assert(!get_interrupt_state());
+
     task_t *current = running_task();
 
     // 数组中找到一个就绪状态的任务
@@ -160,6 +168,7 @@ u32 thread_a()
     {
         printk("A");
         // schedule();
+        yield();
     }
 }
 
@@ -171,6 +180,7 @@ u32 thread_b()
     {
         printk("B");
         // schedule();
+        yield();
     } // 使用while 方法，函数退出有其他的方法。
 }
 u32 thread_c()
@@ -181,6 +191,7 @@ u32 thread_c()
     {
         printk("C");
         // schedule();
+        yield();
     }
 }
 

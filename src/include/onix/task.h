@@ -56,4 +56,6 @@ void schedule();
 // 初始化任务函数
 // void task_init();
 
+void test_yield();
+
 #endif
