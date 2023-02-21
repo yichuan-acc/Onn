@@ -25,6 +25,7 @@ extern void rtc_init();
 extern void memory_map_init();
 extern void mapping_init();
 extern void memory_test();
+extern void bitmap_test_s();
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 
@@ -107,7 +108,7 @@ void kernel_init()
 
     // set_alarm(2);
 
-    bitmap_tests();
+    bitmap_test_s();
 
     // asm volatile("sti");
     hang();

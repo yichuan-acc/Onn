@@ -17,7 +17,7 @@ void bitmap_init(bitmap_t *map, char *bits, u32 length, u32 offset);
 void bitmap_make(bitmap_t *map, char *bits, u32 length, u32 offset);
 
 // 测试位图的某一位是否为 1
-bool bitmap_tests(bitmap_t *map, u32 index);
+bool bitmap_test(bitmap_t *map, u32 index);
 
 // 设置位图某位的值
 void bitmap_set(bitmap_t *map, u32 index, bool value);

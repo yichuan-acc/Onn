@@ -128,7 +128,7 @@ int bitmap_scan(bitmap_t *map, u32 count)
 u8 buf[LEN];
 bitmap_t map;
 
-void bitmap_tests()
+void bitmap_test_s()
 {
 
     bitmap_init(&map, buf, LEN, 0);
