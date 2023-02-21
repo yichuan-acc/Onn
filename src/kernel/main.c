@@ -23,6 +23,7 @@ extern void time_init();
 extern void rtc_init();
 extern void memory_map_init();
 extern void mapping_init();
+extern void memory_test();
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 
@@ -86,12 +87,10 @@ void test_interrupt()
 void kernel_init()
 {
     memory_map_init();
-
     mapping_init();
     // console_init();
     // gdt_init();
     interrupt_init();
-
     // task_init();
     // clock_init();
     // time_init();
@@ -102,8 +101,7 @@ void kernel_init()
     // memory_test();
 
     BMB;
-    char *ptr = (char *)(0x100000 * 20);
-    ptr[0] = 'a';
+    memory_test();
 
     // asm volatile("sti");
     hang();
