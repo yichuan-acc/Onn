@@ -265,6 +265,7 @@ static void flush_tlb(u32 vaddr)
                  : "memory");
 }
 
+//-----------------memory_测试---------------------
 void memory_test()
 {
     BMB;

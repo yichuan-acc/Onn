@@ -13,6 +13,7 @@
 #include <onix/stdlib.h>
 #include <onix/rtc.h>
 #include <onix/memory.h>
+#include <onix/bitmap.h>
 
 extern void console_init();
 extern void gdt_init();
@@ -84,6 +85,14 @@ void test_interrupt()
         delay(100000000);
     }
 }
+
+void test_42()
+{
+
+    BMB;
+    memory_test();
+}
+
 void kernel_init()
 {
     memory_map_init();
@@ -98,13 +107,8 @@ void kernel_init()
 
     // set_alarm(2);
 
-    // memory_test();
-
-    BMB;
-    memory_test();
+    bitmap_tests();
 
     // asm volatile("sti");
     hang();
-
-    // return;
 }
