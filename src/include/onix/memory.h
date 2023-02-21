@@ -33,10 +33,10 @@ void set_cr3(u32 pde);
 // 将 cr0 寄存器最高位PE置 1 ，启动分页
 // static void enable_page();
 
-// // 分配 count 个连续的内核页
-// u32 alloc_kpage(u32 count);
+// 分配 count 个连续的内核页
+u32 alloc_kpage(u32 count);
 
-// // 释放 count 个连续的内核页
-// void free_kpage(u32 vaddr, u32 count);
+// 释放 count 个连续的内核页
+void free_kpage(u32 vaddr, u32 count);
 
 #endif

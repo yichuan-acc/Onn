@@ -107,7 +107,8 @@ void kernel_init()
     // rtc_init();
     // set_alarm(2);
 
-    bitmap_test_s();
+    // bitmap_test_s();
+    memory_test();
 
     // asm volatile("sti");
     hang();

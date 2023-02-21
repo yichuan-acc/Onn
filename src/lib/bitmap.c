@@ -120,6 +120,8 @@ int bitmap_scan(bitmap_t *map, u32 count)
     return start + map->offset;
 }
 
+//-----------------做测试Bitmap
+
 #include <onix/debug.h>
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
@@ -144,3 +146,4 @@ void bitmap_test_s()
         LOGK("%d\n", idx);
     }
 }
+//-----------------做测试Bitmap
