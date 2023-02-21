@@ -129,3 +129,8 @@ sudo pacman -S pulseaudio-alsa
 sudo pacman -S pavucontrol-qt
 sudo pacman -S pavucontrol
 启用：amixer sset Master unmute
+
+
+
+## 48
+yield()系统调用，进程主动交出执行权，调度执行其他进程
