@@ -28,6 +28,7 @@ extern void memory_test();
 extern void bitmap_test_s();
 extern void memory_test_44();
 extern void task_init();
+extern void syscall_init();
 
 #define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 
@@ -142,7 +143,9 @@ void kernel_init()
 
     task_init();
 
-    set_interrupt_state(true);
+    syscall_init();
+
+    // set_interrupt_state(true);
 
     // asm volatile("sti");
     // hang();
