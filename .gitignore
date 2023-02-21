@@ -11,6 +11,8 @@
 *.gz
 *.lock
 *.vmdk
+*.tar.zst
+*.tar.gz
 
 
 bochs/src
