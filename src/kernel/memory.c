@@ -352,6 +352,7 @@ void free_kpage(u32 vaddr, u32 count)
     LOGK("FREE  kernel pages 0x%p count %d\n", vaddr, count);
 }
 
+//---------测试44
 void memory_test_44()
 {
     u32 *pages = (u32 *)(0x200000);
@@ -360,6 +361,7 @@ void memory_test_44()
     for (size_t i = 0; i < count; i++)
     {
         /* code */
+        // 分配1页
         pages[i] = alloc_kpage(1);
         LOGK("0x%x\n", i);
     }
@@ -370,3 +372,5 @@ void memory_test_44()
         free_kpage(pages[i], 1);
     }
 }
+
+//---------测试44
