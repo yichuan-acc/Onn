@@ -88,6 +88,12 @@ void schedule()
         current->state = TASK_READY;
     }
 
+    //
+    if (!current->ticks)
+    {
+        current->ticks = current->priority;
+    }
+
     // 下一个进程开始执行
     next->state = TASK_RUNNING;
 
