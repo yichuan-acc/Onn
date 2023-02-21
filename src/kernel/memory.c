@@ -185,12 +185,6 @@ static void entry_init(page_entry_t *entry, u32 index)
     entry->index = index;
 }
 
-// 内核页目录
-#define KERNEL_PAGE_DIR 0x200000
-
-// 内核页表
-#define KERNEL_PAGE_ENTRY 0X201000
-
 void memory_test()
 {
     u32 pages[10];
@@ -207,6 +201,12 @@ void memory_test()
     }
 }
 
+// 内核页目录
+#define KERNEL_PAGE_DIR 0x200000
+
+// 内核页表
+#define KERNEL_PAGE_ENTRY 0X201000
+
 // 初始化内存映射
 void mapping_init()
 {
@@ -216,16 +216,15 @@ void mapping_init()
     entry_init(&pde[0], IDX(KERNEL_PAGE_ENTRY));
 
     page_entry_t *pte = (page_entry_t *)KERNEL_PAGE_ENTRY;
-
-    memset(pte, 0, PAGE_SIZE);
-
     page_entry_t *entry;
-    idx_t index = 0;
+    // memset(pte, 0, PAGE_SIZE);
+
+    // idx_t index = 0;
 
     for (size_t tidx = 0; tidx < 1024; tidx++)
     {
         entry = &pte[tidx];
-        entry_init(entry, IDX(KERNEL_PAGE_DIR));
+        entry_init(entry, tidx);
         memory_map[tidx] = 1; // 设置物理内存数组，该页被占用
     }
 

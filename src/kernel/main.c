@@ -22,8 +22,9 @@ extern void hang();
 extern void time_init();
 extern void rtc_init();
 extern void memory_map_init();
-
 extern void mapping_init();
+
+#define LOGK(fmt, args...) DEBUGK(fmt, ##args)
 
 // 参数传递，从右向左压入栈中
 // 所以先读取左边参数
